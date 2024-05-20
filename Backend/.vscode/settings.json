@@ -12,6 +12,6 @@
     "objectscript.conn": {
         "active": true,
         "server": "todoapp",
-        "ns": "USER"
+        "ns": "TODOAPP"
     }
 }
