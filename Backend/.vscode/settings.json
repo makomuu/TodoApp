@@ -1,0 +1,17 @@
+{
+    "intersystems.servers": {
+        "todoapp": {
+            "webServer": {
+                "host": "localhost",
+                "port": 52773,
+                "scheme": "http"
+            },
+            "username": "ac9so"
+        }
+    },
+    "objectscript.conn": {
+        "active": true,
+        "server": "todoapp",
+        "ns": "USER"
+    }
+}
