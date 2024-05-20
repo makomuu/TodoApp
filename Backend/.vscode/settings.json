@@ -10,7 +10,7 @@
         }
     },
     "objectscript.conn": {
-        "active": false,
+        "active": true,
         "server": "todoapp",
         "ns": "TODOAPP"
     }
