@@ -6,11 +6,11 @@
                 "port": 52773,
                 "scheme": "http"
             },
-            "username": "ac9so"
+            "username": "todo"
         }
     },
     "objectscript.conn": {
-        "active": true,
+        "active": false,
         "server": "todoapp",
         "ns": "TODOAPP"
     }
