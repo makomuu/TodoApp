@@ -1,4 +1,12 @@
 {
+    "folders": [
+        {
+            "path": "C:/Users/ac9so/TodoApp/Backend"
+        },
+        {
+            "path": "C:/Users/ac9so/TodoApp/API"
+        }
+    ],
     "intersystems.servers": {
         "todoapp": {
             "webServer": {
