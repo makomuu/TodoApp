@@ -1,0 +1,31 @@
+get:
+  tags:
+    - jobs
+  summary: タスク一覧取得
+  description: タスクの一覧を取得する
+  operationId: get-jobs
+  responses:
+    '200':
+      $ref: '../../components/responses/Job.yaml'
+post:
+  tags:
+    - jobs
+  summary: タスク新規作成
+  description: タスクの新規作成をする
+  operationId: post-jobs
+  responses:
+    '201':
+      $ref: '../../components/responses/Job.yaml'
+  requestBody:
+    $ref: '../../components/requestBodies/Job.yaml'
+put:
+  tags:
+    - jobs
+  summary: タスク編集
+  description: 既存のタスクの編集をする
+  operationId: put-jobs
+  responses:
+    '200':
+      $ref: '../../components/responses/Job.yaml'
+  requestBody:
+    $ref: '../../components/requestBodies/Job.yaml'

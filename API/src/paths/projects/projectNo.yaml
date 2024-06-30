@@ -1,0 +1,16 @@
+delete:
+  tags:
+    - projects
+  summary: プロジェクト削除
+  description: 対象のプロジェクトを削除する
+  operationId: delete-projects
+  parameters:
+    - schema:
+        type: integer
+      name: projectNo
+      in: path
+      required: true
+      description: プロジェクトNo
+  responses:
+    '200':
+      '../../components/responses/Project.yaml'

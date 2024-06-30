@@ -1,0 +1,33 @@
+get:
+  tags:
+    - projects
+  summary: プロジェクト一覧取得
+  description: プロジェクトの一覧を取得する
+  operationId: get-projects
+  responses:
+    '200':
+      $ref: '../../components/responses/Project.yaml'
+    '500':
+      $ref: ''
+post:
+  tags:
+    - projects
+  summary: プロジェクト新規作成
+  description: プロジェクトの新規作成をする
+  operationId: post-projects
+  responses:
+    '201':
+      $ref: '../../components/responses/Project.yaml'
+  requestBody:
+    $ref: '../../components/requestBodies/Project.yaml'
+put:
+  tags:
+    - projects
+  summary: プロジェクト編集
+  description: 既存プロジェクトの編集をする
+  operationId: edit-projects
+  responses:
+    '200':
+      $ref: '../../components/responses/Project.yaml'
+  requestBody:
+    $ref: '../../components/requestBodies/Project.yaml'

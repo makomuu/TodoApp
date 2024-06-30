@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Todoタスク管理アプリ API仕様書
+  version: 0.0.1
+servers:
+  - url: 'http://localhost:52773/todoapp'
+paths:
+# プロジェクト関連API
+  /projects:
+    $ref: './paths/projects/index.yaml'
+  /projects/{projectNo}:
+    $ref: './paths/projects/projectNo.yaml'
+# タスク関連API
+  /jobs:
+    $ref: './paths/jobs/index.yaml'
+  /jobs/{ticketNo}:
+    $ref: './paths/jobs/ticketNo.yaml'

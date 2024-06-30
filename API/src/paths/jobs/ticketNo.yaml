@@ -1,0 +1,16 @@
+delete:
+  tags:
+    - jobs
+  summary: タスク削除
+  description: 対象のタスクを削除する
+  operationId: delete-jobs
+  parameters:
+    - schema:
+        type: integer
+      name: ticketNo
+      in: path
+      required: true
+      description: チケット番号
+  responses:
+    '200':
+      '../../components/responses/Jobs.yaml'

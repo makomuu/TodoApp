@@ -1,0 +1,14 @@
+description: Example responses
+content:
+  application/json:
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          projectNo:
+            type: integer
+          projectName:
+            type: string
+          createDate:
+            type: string
