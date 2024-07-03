@@ -13,4 +13,4 @@ delete:
       description: チケット番号
   responses:
     '200':
-      '../../components/responses/Jobs.yaml'
+      $ref: '../../components/responses/Job.yaml'
