@@ -11,7 +11,7 @@ paths:
   /projects/{projectNo}:
     $ref: './paths/projects/projectNo.yaml'
 # タスク関連API
-  /jobs:
+  /jobs/{projectNo}:
     $ref: './paths/jobs/index.yaml'
   /jobs/{ticketNo}:
     $ref: './paths/jobs/ticketNo.yaml'

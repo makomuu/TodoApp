@@ -4,6 +4,13 @@ get:
   summary: タスク一覧取得
   description: タスクの一覧を取得する
   operationId: get-jobs
+  parameters:
+  - schema:
+      type: integer
+    name: projectNo
+    in: path
+    required: true
+    description: プロジェクトNo
   responses:
     '200':
       $ref: '../../components/responses/Job.yaml'
@@ -13,6 +20,13 @@ post:
   summary: タスク新規作成
   description: タスクの新規作成をする
   operationId: post-jobs
+  parameters:
+  - schema:
+      type: integer
+    name: projectNo
+    in: path
+    required: true
+    description: プロジェクトNo
   responses:
     '201':
       $ref: '../../components/responses/Job.yaml'
@@ -24,6 +38,13 @@ put:
   summary: タスク編集
   description: 既存のタスクの編集をする
   operationId: put-jobs
+  parameters:
+  - schema:
+      type: integer
+    name: projectNo
+    in: path
+    required: true
+    description: プロジェクトNo
   responses:
     '200':
       $ref: '../../components/responses/Job.yaml'
