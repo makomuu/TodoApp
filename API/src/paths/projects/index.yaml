@@ -4,11 +4,16 @@ get:
   summary: プロジェクト一覧取得
   description: プロジェクトの一覧を取得する
   operationId: get-projects
+  parameters:
+  - name: projectNo
+    in: query
+    required: false
+    schema:
+      type: integer
+    description: プロジェクトNo
   responses:
     '200':
       $ref: '../../components/responses/Project.yaml'
-    '500':
-      $ref: ''
 post:
   tags:
     - projects
@@ -19,7 +24,7 @@ post:
     '201':
       $ref: '../../components/responses/Project.yaml'
   requestBody:
-    $ref: '../../components/requestBodies/Project.yaml'
+      $ref: '../../components/requestBodies/Project.yaml'
 put:
   tags:
     - projects
@@ -30,4 +35,4 @@ put:
     '200':
       $ref: '../../components/responses/Project.yaml'
   requestBody:
-    $ref: '../../components/requestBodies/Project.yaml'
+      $ref: '../../components/requestBodies/Project.yaml'

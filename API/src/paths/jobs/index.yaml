@@ -31,7 +31,7 @@ post:
     '201':
       $ref: '../../components/responses/Job.yaml'
   requestBody:
-    $ref: '../../components/requestBodies/Job.yaml'
+      $ref: '../../components/requestBodies/Job.yaml'
 put:
   tags:
     - jobs
@@ -49,4 +49,4 @@ put:
     '200':
       $ref: '../../components/responses/Job.yaml'
   requestBody:
-    $ref: '../../components/requestBodies/Job.yaml'
+      $ref: '../../components/requestBodies/Job.yaml'

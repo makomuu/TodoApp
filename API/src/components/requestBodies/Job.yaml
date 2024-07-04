@@ -1,17 +1,17 @@
 content:
   application/json:
     schema:
-    type: object
-    properties:
-      ticketNo:
-        type: integer
-      projectNo:
-        type: integer
-      jobName:
-        type: string
-      jobContent:
-        type: string
-      status:
-        type: integer
-      limit:
-        type: string
+      type: object
+      properties:
+        ticketNo:
+          type: integer
+        projectNo:
+          type: integer
+        jobName:
+          type: string
+        jobContent:
+          type: string
+        status:
+          type: integer
+        limit:
+          type: string
