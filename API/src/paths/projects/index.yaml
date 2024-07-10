@@ -30,7 +30,7 @@ put:
     - projects
   summary: プロジェクト編集
   description: 既存プロジェクトの編集をする
-  operationId: edit-projects
+  operationId: put-projects
   responses:
     '200':
       $ref: '../../components/responses/Project.yaml'
