@@ -12,6 +12,8 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 <Route Url="" Method="POST" Call="CreateProject" Cors="true"/>
 <!-- プロジェクト作成 -->
 <Route Url="" Method="PUT" Call="UpdateProject" Cors="true"/>
+<!-- プロジェクト削除 -->
+<Route Url="/:projectNo" Method="DELETE" Call="DeleteProject" Cors="true"/>
 </Routes>
 }
 
@@ -36,6 +38,12 @@ ClassMethod UpdateProject() As %Status
 {
     set requestObj = ..CallToRequestDynamicObject()
     do ##class(Backend.src.Service.Master.ProjectService).UpdateProject(requestObj)
+    return $$$OK
+}
+
+ClassMethod DeleteProject(projectNo As %Integer) As %Status
+{
+    do ##class(Backend.src.Service.Master.ProjectService).DeleteProject(projectNo)
     return $$$OK
 }
 

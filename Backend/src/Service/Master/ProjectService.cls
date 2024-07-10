@@ -43,7 +43,18 @@ ClassMethod UpdateProject(projectObj As %DynamicObject)
     do project.SetByJson(projectObj)
 
     do project.Register()
-        #; Json作成
+    #; Json作成
+    do project.CreateResponseJSON()
+}
+
+/// プロジェクト削除
+ClassMethod DeleteProject(projectNo As %Integer)
+{
+    set project = ##class(Entity.Master.Project).%New()
+    do project.SetByGlobal(projectNo)
+
+    do project.Delete()
+    #; Json作成
     do project.CreateResponseJSON()
 }
 
