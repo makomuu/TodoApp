@@ -48,6 +48,42 @@ Method CreateJson() As %DynamicObject
         return json
 }
 
+/// レスポンス部分JSON作成
+Method CreateResponseJSON()
+{
+    set jb = ##class(Backend.src.Utility.JsonBuilder).%New()
+    set projectJSON = ..CreateJson()
+    do jb.PushResult(projectJSON)
+    do jb.WriteJSON()
+}
+
+/// 既存グローバルの内容をプロパティにセット
+Method SetByGlobal(projectNo As %Integer)
+{
+    set glProject = $$$Project
+    set ..ProjectNo = projectNo
+
+    if (..Exists()) {
+        set projectBuf = $G(@glProject@(projectNo))
+        set ..ProjectName = $LI(projectBuf, 1)
+        set ..CreateDate = $LI(projectBuf, 2)
+    }
+}
+
+/// プロパティを使用して存在チェック
+Method Exists() As %Boolean
+{
+    return ##class(Entity.Master.Project).MasterExists(..ProjectNo)
+}
+
+/// 引数を使用して存在チェック
+ClassMethod MasterExists(projectNo As %Integer) As %Boolean
+{
+    return:(projectNo = "") $$$False
+    set glProject = $$$Project
+    return $D(@glProject@(projectNo))
+}
+
 /// グローバル作成
 Method Register()
 {

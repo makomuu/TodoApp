@@ -19,8 +19,7 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 ClassMethod GetProjects() As %Status
 {
     set projectNo = ..CallGetQueryOrDefault("projectNo")
-    zw projectNo
-    do ##class(Backend.src.Service.Master.ProjectService).GetProjects()
+    do ##class(Backend.src.Service.Master.ProjectService).GetProjects(projectNo)
     return $$$OK
 }
 
