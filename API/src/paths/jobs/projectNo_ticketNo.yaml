@@ -7,6 +7,12 @@ delete:
   parameters:
     - schema:
         type: integer
+      name: projectNo
+      in: path
+      required: true
+      description: プロジェクトNo
+    - schema:
+        type: integer
       name: ticketNo
       in: path
       required: true

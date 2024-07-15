@@ -5,9 +5,9 @@ content:
       items:
         type: object
         properties:
-          ticketNo:
-            type: integer
           projectNo:
+            type: integer
+          ticketNo:
             type: integer
           jobName:
             type: string

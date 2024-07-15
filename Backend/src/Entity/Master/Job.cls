@@ -32,7 +32,6 @@ Method %New()
 Method SetByJson(json As %DynamicObject)
 {
         set ..TicketNo = json.%Get("ticketNo")
-        set ..ProjectNo = json.%Get("projectNo")
         set ..JobName = json.%Get("jobName")
         set ..JobContent = json.%Get("jobContent")
         set ..Status = json.%Get("status")
@@ -43,7 +42,6 @@ Method SetByJson(json As %DynamicObject)
 Method CreateLB()
 {
         return $LB(
-            ..ProjectNo,
             ..JobName,
             ..JobContent,
             ..Status,
@@ -56,8 +54,8 @@ Method CreateJson() As %DynamicObject
 {
         set json = ##class(%DynamicObject).%New()
 
-        do json.%Set("ticketNo", ..TicketNo)
         do json.%Set("projectNo", ..ProjectNo)
+        do json.%Set("ticketNo", ..TicketNo)
         do json.%Set("jobName", ..JobName)
         do json.%Set("jobContent", ..JobContent)
         do json.%Set("status", ..Status)
@@ -66,48 +64,57 @@ Method CreateJson() As %DynamicObject
         return json
 }
 
-Method SetByGlobal(ticketNo As %Integer)
+/// レスポンス部分JSON作成
+Method CreateResponseJSON()
+{
+    set jb = ##class(Backend.src.Utility.JsonBuilder).%New()
+    set jobJSON = ..CreateJson()
+    do jb.PushResult(jobJSON)
+    do jb.WriteJSON()
+}
+
+Method SetByGlobal(projectNo As %Integer, ticketNo As %Integer)
 {
     set glJob = $$$Job
+    set ..ProjectNo = projectNo
     set ..TicketNo = ticketNo
 
     if (..Exists()) {
-        set jobBuf = $G(@glJob@(ticketNo))
-        set ..ProjectNo = $LG(jobBuf, 1)
-        set ..JobName = $LG(jobBuf, 2)
-        set ..JobContent = $LG(jobBuf, 3)
-        set ..Status = $LG(jobBuf, 4)
-        set ..Limit = $LG(jobBuf, 5)
+        set jobBuf = $G(@glJob@(projectNo, ticketNo))
+        set ..JobName = $LG(jobBuf, 1)
+        set ..JobContent = $LG(jobBuf, 2)
+        set ..Status = $LG(jobBuf, 3)
+        set ..Limit = $LG(jobBuf, 4)
     }
 }
 
 /// プロパティを使用して存在チェック
 Method Exists() As %Boolean
 {
-    return ##class(Entity.Master.Job).MasterExists(..TicketNo)
+    return ##class(Entity.Master.Job).MasterExists(..ProjectNo, ..TicketNo)
 }
 
 /// 引数を使用してインスタンスに依存しない存在チェック
-ClassMethod MasterExists(ticketNo As %Integer) As %Boolean
+ClassMethod MasterExists(projectNo As %Integer, ticketNo As %Integer) As %Boolean
 {
-    return:(ticketNo = "") $$$False
+    return:((projectNo = "") || (ticketNo = "")) $$$False
 
     set glJob = $$$Job
-    return $D(@glJob@(ticketNo))
+    return $D(@glJob@(projectNo, ticketNo))
 }
 
 /// グローバル作成
 Method Register()
 {
     set glJob = $$$Job
-    set @glJob@(..TicketNo) = ..CreateLB()
+    set @glJob@(..ProjectNo, ..TicketNo) = ..CreateLB()
 }
 
 /// グローバル削除
 Method Delete()
 {
     set glJob = $$$Job
-    kill @glJob@(..ProjectNo)
+    kill @glJob@(..ProjectNo, ..TicketNo)
 }
 
 }

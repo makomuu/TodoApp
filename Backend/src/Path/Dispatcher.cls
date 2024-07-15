@@ -23,7 +23,7 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 <!-- プロジェクト -->
 <Map Prefix="/projects" Forward="Backend.src.Map.Projects" />
 <!-- タスク -->
-<Map Prefix="/jobs" Forward="Map.Jobs" />
+<Map Prefix="/jobs" Forward="Backend.src.Map.Jobs" />
 </Routes>
 }
 
